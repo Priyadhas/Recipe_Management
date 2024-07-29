@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const recipeControllers = require('../controllers/recipeControllers');
 const recipeEmail=require('../controllers/sendEmailController');
+// const { authenticateToken } = require('../middleware/authenticateToken');
+
 router.get('/', recipeControllers.getAllRecipes);
 router.get('/:id', recipeControllers.getRecipeById);
 router.post('/', recipeControllers.createRecipe);

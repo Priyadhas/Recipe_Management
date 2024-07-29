@@ -23,12 +23,13 @@ exports.getRecipeById = async (req, res) => {
 
 exports.createRecipe = async (req, res) => {
   try {
-    const { title, imageUrl, ingredients, preparation } = req.body;
+    const { title, imageUrl, ingredients, preparation, video } = req.body;
     const recipe = await db.Recipee.create({
       title,
       imageUrl,
       ingredients,
-      preparation
+      preparation,
+      video
     });
     res.json(recipe);
   } catch (error) {
@@ -38,8 +39,8 @@ exports.createRecipe = async (req, res) => {
 
 exports.updateRecipe = async (req, res) => {
   try {
-    const { title, imageUrl, ingredients, preparation } = req.body;
-    await db.Recipee.update({ title, imageUrl, ingredients, preparation }, { where: { id: req.params.id } });
+    const { title, imageUrl, ingredients, preparation, video } = req.body;
+    await db.Recipee.update({ title, imageUrl, ingredients, preparation, video }, { where: { id: req.params.id } });
     res.json({ message: 'Recipe updated' });
   } catch (error) {
     res.status(500).json({ error: error.message });
